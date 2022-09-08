@@ -19,8 +19,6 @@
         "@vee-validate/rules": "^4.5.11",
         "graphql": "^16.5.0",
         "vee-validate": "^4.5.11",
-        "vue-apollo": "^3.1.0",
-        "@vue/apollo-composable": "^4.0.0-alpha.18",
-        "vt-notifications": "^0.4.1"
+        "vue-apollo": "^3.1.0"
     }
 }
