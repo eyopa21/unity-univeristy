@@ -1,79 +1,159 @@
 <template>
-    <nav
-        class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-gray-800">
-        <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-            <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                <a class="text-sm lg:-ml-16 font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                    href="index.html">Unity University</a>
-                    <button @click="showNav = !showNav" class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-                    type="button"  ><MenuIcon v-if="showNav==false" class="w-8 h-8 text-white"/> <XIcon v-if="showNav == true" class="w-8 h-8 text-white"/> </button>
+    <header class="bg-black flex justify-between items-center fixed top-0 left-0 w-full lg:static z-[1111111111]">
+        <div
+            class="flex justify-between w-full px-4 lg:px-0  lg:bg-transparent  bg-black">
+            <div class="flex justify-between w-full items-center space-x-4 lg:my-8 my-5">
+                <!-- website logo -->
+                <a class="text-5xl font-semibold" href="index.html">
+                   
+                <div class="h-[26px] lg:h-[32px] text-white uppercase text-4xl ml-2 tracking-wider font-logo">eyoba</div>
+                </a>
+                <div class="flex items-center">
+                    <!-- light and dark mode button -->
+                    <!--button id="theme-toggle-mobile" type="button"
+                        class="dark-light-btn lg:hidden w-[44px] h-[44px] ml-2">
+                        <MoonIcon class="w-5 h-5" />
+
+                    </button-->
+                    <!-- mobile toggle button -->
+                    <button @click="showNav = !showNav" id="menu-toggle" type="button" class="menu-toggle-btn">
+                        <MenuIcon v-if="showNav == false" class="w-5 h-5" />
+                        <XIcon v-else class="w-5 h-5" />
+                    </button>
+                </div>
             </div>
-            <div :class="showNav ? 'block':'hidden'" class="ml-16 lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none"
-               id="example-collapse-navbar"> 
-                <ul class="flex flex-col lg:flex-row list-none mr-auto">
-                    <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="blog.html">
-                            <HomeIcon class="w-5 h-5 mr-1" />
-                            Home
-                        </a>
-                    </li>
-                    <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="blog.html">
-                            <HomeIcon class="w-5 h-5 mr-1" />
-                            Materials
-                        </a>
-                    </li>
-                    <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="blog.html">
-                            <HomeIcon class="w-5 h-5 mr-1" />
-                            About Us
-                        </a>
-                    </li>
-                    <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="blog.html">
-                            <HomeIcon class="w-5 h-5 mr-1" />
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-                <ul class="hidden lg:flex flex-col lg:flex-row list-none lg:ml-auto ">
-                    <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="https://www.facebook.com/">
-                            <img class="w-6 h-6" src="../assets/svg/whatsapp.svg" alt="" /><span
-                                class="lg:hidden inline-block ml-2">Share</span></a>
-                    </li>
-                    <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="https://twitter.com/abhinav">
-                            <img class="w-6 h-6" src="../assets/svg/telegram.svg" alt="" />
-                            <span class="lg:hidden inline-block ml-2">Tweet</span></a>
-                    </li>
-                    <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="https://github.com/abhinavs/cookie">
-                            <img class="w-6 h-6" src="../assets/svg/twitter.svg" alt="" /><span
-                                class="lg:hidden inline-block ml-2">Star</span></a>
-                    </li>
-                    <li class="flex items-center">
-                        <button
-                            class="bg-white flex flex-row text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
-                            type="button" style="transition: all 0.15s ease 0s">
-                            <PhoneIcon class="h-4 w-4 mr-2" /> Contact Us
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            
         </div>
-    </nav>
+
+        <!-- header items two for large screens -->
+        <nav class="hidden lg:block ">
+            <ul class="flex my-12">
+                <li>
+                    <NuxtLink to="/" class="menu-item-two " :class="$route.fullPath=='/' ? 'menu-item-two-active':'menu-item-two'">
+                        <span class="mr-2 text-base">
+                           <HomeIcon class="w-4 h-4 mb-[2px]"/>
+                        </span> Home </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="/about" class="menu-item-two" :class="$route.fullPath=='/about' ? 'menu-item-two-active':'menu-item-two'" >
+                        <span class="mr-2 text-base">
+                            <HomeIcon class="w-4 h-4 mb-[2px]"/>
+                        </span> About </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="/resume" class="menu-item-two" :class="$route.fullPath=='/resume' ? 'menu-item-two-active':'menu-item-two'">
+                        <span class="mr-2 text-base">
+                            <IdentificationIcon class="w-4 h-4 mb-[2px]"/>
+                        </span> Resume </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="projects" class="menu-item-two" :class="$route.fullPath=='/projects' ? 'menu-item-two-active':'menu-item-two'">
+                        <span class="mr-2 text-base">
+                            <BriefcaseIcon class="w-4 h-4 mb-[2px]"/>
+                        </span> Works </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="blogs" class="menu-item-two" :class="$route.fullPath=='/blogs' ? 'menu-item-two-active':'menu-item-two'">
+                        <span class="mr-2 text-base">
+                            <NewspaperIcon class="w-4 h-4 mb-[2px]"/>
+                           
+                        </span> Blogs </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="/contact" class="menu-item-two" :class="$route.fullPath=='/contact' ? 'menu-item-two-active':'menu-item-two'">
+                        <span class="mr-2 text-base">
+                            <PhoneIcon class="w-4 h-4 mb-[2px]"/>
+                        </span> Contact </NuxtLink>
+                </li>
+                <li>
+                    <!-- light and dark mode button -->
+                    <!--button @click="test" id="theme-toggle" type="button" class="dark-light-btn w-[44px] h-[44px] ml-2">
+
+                        <MoonIcon class="w-5 h-5" />
+                    </button-->
+
+                </li>
+            </ul>
+        </nav>
+
+        <!-- mobile menu start -->
+        <nav @click="showNav=false" id="navbar" :class="showNav? 'block lg:hidden':'hidden lg:hidden'">
+            <ul
+                class="block rounded-b-[20px] shadow-md absolute left-0 top-20 z-[22222222222222] w-full bg-white dark:bg-[#1d1d1d]">
+                <li>
+                    <NuxtLink class="mobile-menu-items" to="/" :class="$route.fullPath=='/' ? 'mobile-menu-items-active':'mobile-menu-items'">
+                        <span class="mr-2 text-xl">
+                            <HomeIcon class="w-4 h-4"/>
+                        </span> Home </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink class="mobile-menu-items" to="/about"  :class="$route.fullPath=='/about' ? 'mobile-menu-items-active':'mobile-menu-items'">
+                        <span class="mr-2 text-xl">
+                            <UserIcon class="w-4 h-4"/>
+                        </span> About </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink class="mobile-menu-items" to="/resume"  :class="$route.fullPath=='/resume' ? 'mobile-menu-items-active':'mobile-menu-items'">
+                        <span class="mr-2 text-xl">
+                            <IdentificationIcon class="w-4 h-4"/>
+                        </span> Resume </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink class="mobile-menu-items" to="/projects"  :class="$route.fullPath=='/projects' ? 'mobile-menu-items-active':'mobile-menu-items'">
+                        <span class="mr-2 text-xl">
+                            <BriefcaseIcon class="w-4 h-4"/>
+                        </span> Works </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink class="mobile-menu-items" to="/blogs"  :class="$route.fullPath=='/blogs' ? 'mobile-menu-items-active':'mobile-menu-items'">
+                        <span class="mr-2 text-xl">
+                            <NewspaperIcon class="w-4 h-4"/>
+                        </span> Blogs </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink class="mobile-menu-items" to="/contact"  :class="$route.fullPath=='/contact' ? 'mobile-menu-items-active':'mobile-menu-items'">
+                        <span class="mr-2 text-xl">
+                            <PhoneIcon class="w-4 h-4"/>
+                        </span> Contact </NuxtLink>
+                </li>
+            </ul>
+        </nav>
+        <!-- mobile menu end -->
+        {{getTheme}}
+    </header>
 </template>
 <script setup>
-import { HomeIcon, PhoneIcon, MenuIcon, XIcon } from "@heroicons/vue/solid";
+import { MoonIcon, MenuIcon, XIcon, HomeIcon, UserIcon ,NewspaperIcon, BriefcaseIcon, IdentificationIcon, PhoneIcon } from "@heroicons/vue/solid";
 
 const showNav = ref(false)
+
+const test = () => {
+    if(process.client){
+
+        localStorage.setItem("color-themes", "dark")
+    }
+}
+
+
+const lightMode = () => {
+    if(process.client){
+
+localStorage.clear();
+}
+}
+
+
+const getTheme = computed(() => {
+    if(process.client){
+
+if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+   document.documentElement.classList.add("dark");
+ } else {
+     document.documentElement.classList.remove("dark");
+ }
+}
+})
+
+  
+
 </script>
+
